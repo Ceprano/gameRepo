@@ -8,6 +8,26 @@
 
 import SpriteKit
 
+//background sounds
+import AVFoundation
+var backgroundMusicPlayer: AVAudioPlayer!
+func playBackgroundMusic(filename: String) {
+    let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
+    if (url == nil) {
+    println("Could not find file: \(filename)")
+    return
+    }
+    var error: NSError? = nil
+    backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+    if backgroundMusicPlayer == nil {
+    println("Could not create audio player: \(error!)")
+    return
+    }
+    backgroundMusicPlayer.numberOfLoops = -1
+    backgroundMusicPlayer.prepareToPlay()
+    backgroundMusicPlayer.play()
+}
+
 //collision detection and physics struct -- this will set up constants for the physics categories
 //note that the category on the spritekit is just a single 32 bit integer, and acts as a bitmask 
 //i.e. each of the 32 bits in the integer represents a category(i.e. there are 32 categories max because 1 int = 1 category) 
@@ -52,6 +72,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // 1 -- declare a private constant for the player (i.e. the ninja) which is an eg of a sprite
     let player = SKSpriteNode(imageNamed: "player")
     override func didMoveToView(view: SKView) {
+    //play background music
+    playBackgroundMusic("background-music-aac.caf")
     // 2 -- set background color
     backgroundColor = SKColor.whiteColor()
     // 3 -- Position the sprite to be 10% across vertically and centered horizontally
@@ -125,6 +147,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Touch
         override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        //sound effect 
+        runAction(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion:false))
         // 1 - Choose one of the touches to work with
         let touch = touches.anyObject() as UITouch
         let touchLocation = touch.locationInNode(self)
