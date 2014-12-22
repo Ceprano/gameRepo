@@ -17,6 +17,7 @@
 		8172806E1A462C58004158BD /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8172806B1A462C58004158BD /* background-music-aac.caf */; };
 		8172806F1A462C58004158BD /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8172806C1A462C58004158BD /* pew-pew-lei.caf */; };
 		817280701A462C58004158BD /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8172806D1A462C58004158BD /* sprites.atlas */; };
+		817280721A4789D5004158BD /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817280711A4789D5004158BD /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		8172806B1A462C58004158BD /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		8172806C1A462C58004158BD /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		8172806D1A462C58004158BD /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		817280711A4789D5004158BD /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				817280451A461F4C004158BD /* AppDelegate.swift */,
 				817280491A461F4C004158BD /* GameScene.swift */,
+				817280711A4789D5004158BD /* GameOverScene.swift */,
 				8172804B1A461F4C004158BD /* GameViewController.swift */,
 				8172804D1A461F4C004158BD /* Main.storyboard */,
 				817280501A461F4C004158BD /* Images.xcassets */,
@@ -245,6 +248,7 @@
 			files = (
 				8172804A1A461F4C004158BD /* GameScene.swift in Sources */,
 				8172804C1A461F4C004158BD /* GameViewController.swift in Sources */,
+				817280721A4789D5004158BD /* GameOverScene.swift in Sources */,
 				817280461A461F4C004158BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +441,7 @@
 				817280651A461F4C004158BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		817280661A461F4C004158BD /* Build configuration list for PBXNativeTarget "SpriteKitSimpleGameTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +450,7 @@
 				817280681A461F4C004158BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

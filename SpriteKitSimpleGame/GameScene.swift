@@ -71,6 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //create player sprite
     // 1 -- declare a private constant for the player (i.e. the ninja) which is an eg of a sprite
     let player = SKSpriteNode(imageNamed: "player")
+    var monstersDestroyed = 0
     override func didMoveToView(view: SKView) {
     //play background music
     playBackgroundMusic("background-music-aac.caf")
@@ -138,8 +139,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.moveTo(CGPoint(x: -monster.size.width/2, y: actualY),
         duration: NSTimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
-        monster.runAction(SKAction.sequence([actionMove, actionMoveDone]))
-            
+        
+        //lose action displays game over when a monster goes off the screen
+        let loseAction = SKAction.runBlock() {
+                //transition to a new scene -> GameOverScene
+                let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+                let gameOverScene = GameOverScene(size: self.size, won: false)
+                self.view?.presentScene(gameOverScene, transition: reveal)
+        }
+        monster.runAction(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
         
     }
         
@@ -200,6 +208,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             println("Hit")
             projectile.removeFromParent()
             monster.removeFromParent()
+            monstersDestroyed++
+            if (monstersDestroyed > 30) {
+            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+            let gameOverScene = GameOverScene(size: self.size, won: true)
+            self.view?.presentScene(gameOverScene, transition: reveal)
+            }
         }
         
         //implement contact delegate method
